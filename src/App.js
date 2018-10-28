@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import View from './View';
+import View from './app/View';
 import rates from './dummy-rates';
 import { setRate1, setRate2 } from './redux/actions';
-import './App.css';
 
 class App extends Component {
   constructor(props) {

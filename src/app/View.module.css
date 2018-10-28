@@ -1,0 +1,7 @@
+@import "../variables.css";
+
+.columnsContainer {
+    background-color: var(--main-bg-color);
+    height: 100%;
+    display: flex;
+}
