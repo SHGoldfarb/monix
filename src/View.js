@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { rate1Selector, rate2Selector } from './selectors';
+import { rate1Selector, rate2Selector } from './redux/selectors';
 
 const View = (props) => {
   const { rate1, rate2 } = props;
