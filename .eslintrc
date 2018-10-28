@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "react-app",
+        "airbnb"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.js"
+            ],
+            "rules": {
+                "react/jsx-filename-extension": "off"
+            }
+        }
+    ]
+}
