@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+import View from './View'
+import rates from './dummy-rates'
+import { setRate1, setRate2 } from './actions.js';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    const rate_names = Object.keys(rates);
+    const rate1 = {
+      name: rate_names[0],
+      rate: rates[rate_names[0]]
+    };
+    const rate2 = {
+      name: rate_names[1],
+      rate: rates[rate_names[1]]
+    };
+    this.state = {
+      rate1,
+      rate2
+    };
+
+    props.onRatesChange(rate1, rate2);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <View />
     );
   }
 }
 
-export default App;
+const mapDispatchtoProps = dispatch => ({
+  onRatesChange: (rate1, rate2) => {
+    dispatch(setRate1(rate1))
+    dispatch(setRate2(rate2))
+  }
+});
+
+export default connect(() => { }, mapDispatchtoProps)(App);
