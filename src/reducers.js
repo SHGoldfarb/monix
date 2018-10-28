@@ -5,15 +5,15 @@ const ratesReducer = (state, action) => {
     case SET_RATE_1:
       return {
         ...state,
-        rate1: action.rate
+        rate1: action.rate,
       };
     case SET_RATE_2:
       return {
         ...state,
-        rate2: action.rate
+        rate2: action.rate,
       };
     default:
-      return state
+      return state;
   }
 };
 

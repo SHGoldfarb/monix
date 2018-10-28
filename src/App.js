@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import View from './View';
 import rates from './dummy-rates';
-import { setRate1, setRate2 } from './actions.js';
+import { setRate1, setRate2 } from './actions';
 import './App.css';
 
 class App extends Component {
@@ -28,6 +29,10 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  onRatesChange: PropTypes.func.isRequired,
+};
+
 const mapDispatchtoProps = dispatch => ({
   onRatesChange: (rate1, rate2) => {
     dispatch(setRate1(rate1));
@@ -35,4 +40,4 @@ const mapDispatchtoProps = dispatch => ({
   },
 });
 
-export default connect(() => { }, mapDispatchtoProps)(App);
+export default connect(() => ({ }), mapDispatchtoProps)(App);

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
@@ -25,7 +26,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^3.0.4",
     "eslint-plugin-import": "^2.14.0",
