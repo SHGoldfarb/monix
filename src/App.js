@@ -10,12 +10,12 @@ class App extends Component {
     super(props);
     const rateNames = Object.keys(rates);
     const rate1 = {
-      name: rateNames[0],
-      rate: rates[rateNames[0]],
-    };
-    const rate2 = {
       name: rateNames[1],
       rate: rates[rateNames[1]],
+    };
+    const rate2 = {
+      name: rateNames[2],
+      rate: rates[rateNames[2]],
     };
 
     props.onRatesChange(rate1, rate2);

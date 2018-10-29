@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { rate1NameSelector, rate2NameSelector } from '../redux/selectors';
 
-const RateHeader = ({ rate1Name, rate2Name, theme }) => (
+const RateHeader = ({ name1, name2, theme }) => (
   <div className={theme.columnsContainer}>
-    <div className={`${theme.leftColumn} ${theme.commonColumns}`}>{rate1Name}</div>
-    <div className={`${theme.rightColumn} ${theme.commonColumns}`}>{rate2Name}</div>
+    <div className={`${theme.leftColumn} ${theme.commonColumns}`}>{name1}</div>
+    <div className={`${theme.rightColumn} ${theme.commonColumns}`}>{name2}</div>
   </div>
 );
 
 RateHeader.propTypes = {
-  rate1Name: PropTypes.string.isRequired,
-  rate2Name: PropTypes.string.isRequired,
+  name1: PropTypes.string.isRequired,
+  name2: PropTypes.string.isRequired,
   theme: PropTypes.objectOf(PropTypes.string),
 };
 
@@ -21,8 +21,8 @@ RateHeader.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  rate1Name: rate1NameSelector(state),
-  rate2Name: rate2NameSelector(state),
+  name1: rate1NameSelector(state),
+  name2: rate2NameSelector(state),
 });
 
 export default connect(mapStateToProps)(RateHeader);

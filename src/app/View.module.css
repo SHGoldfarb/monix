@@ -13,3 +13,14 @@
     flex: 1;
     padding: 0px 5px;
 }
+
+.swipeableContainer {
+    height: 100%;
+}
+
+.swipeableContainer>div {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+}

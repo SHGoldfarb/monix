@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import style from './RateTable.module.css';
-import { createMultiplierSelector } from '../redux/selectors';
+import { multiplierSelector } from '../redux/selectors';
 import TableRow from './TableRow';
 
 class RateTable extends Component {
@@ -82,8 +82,8 @@ RateTable.propTypes = {
   theme: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  multiplier: createMultiplierSelector(ownProps.rateNumber)(state),
+const mapStateToProps = state => ({
+  rootMultiplier: multiplierSelector(state),
 });
 
 export default connect(mapStateToProps)(RateTable);

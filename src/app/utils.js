@@ -1,10 +1,11 @@
 export const classNames = (...args) => args.join(' ');
 
-export const roundTwoDec = number => Math.round(number * 100) / 100;
+export const round4Dec = number => Math.round(number * 10000) / 10000;
 
 export const prettyNumber = (number) => {
   const numberString = number.toString();
   let wholePart = numberString.split('.')[0];
+  const decimalPart = numberString.split('.')[1];
   let ret = '';
   while (wholePart) {
     if (ret) {
@@ -13,7 +14,7 @@ export const prettyNumber = (number) => {
     ret = wholePart.slice(-3) + ret;
     wholePart = wholePart.slice(0, -3);
   }
-  return `${wholePart}${ret}`;
+  return `${ret}${decimalPart ? `,${decimalPart}` : ''}`;
 };
 
-export const prettyTwoDecNumber = number => prettyNumber(roundTwoDec(number));
+export const pretty4DecNumber = number => prettyNumber(round4Dec(number));
