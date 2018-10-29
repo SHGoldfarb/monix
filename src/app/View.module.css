@@ -2,7 +2,8 @@
 
 .columnsContainer {
     background-color: var(--main-bg-color);
-    display: flex;
+    display: flex;    
+    align-items: center;
 }
 
 .leftColumn {
@@ -12,6 +13,7 @@
 .commonColumns {
     flex: 1;
     padding: 0px 5px;
+    
 }
 
 .swipeableContainer {

@@ -10,8 +10,8 @@ import RateTable from './RateTable';
 const View = ({ multiplierUp, multiplierDown }) => (
   <div className={style.swipeableContainer}>
     <Swipeable
-      onSwipedRight={multiplierUp}
-      onSwipedLeft={multiplierDown}
+      onSwipedRight={multiplierDown}
+      onSwipedLeft={multiplierUp}
     >
       <RateHeader theme={style} />
       <RateTable theme={style} />

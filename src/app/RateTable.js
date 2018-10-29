@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import style from './RateTable.module.css';
@@ -32,45 +32,42 @@ class RateTable extends Component {
   render() {
     const { theme, rootMultiplier } = this.props;
     const { open } = this.state;
-    if (open === null) {
-      const multipliers = [...Array(10).keys()].map(key => (key + 1) * rootMultiplier);
-      return (
-        <div className={style.tablesContainer}>
-          {multipliers.map(multiplier => (
-            <TableRow
-              multiplier={multiplier}
-              theme={theme}
-              key={multiplier}
-              onColumnClick={this.handleColumnClick(multiplier)}
-              primary
-            />
-          ))}
-        </div>
-      );
-    }
-    const multipliers = [...Array(9).keys()].map(key => (key + 1) / 10 * rootMultiplier + open);
+    const getPrimaryMultiplier = index => (index + 1) * rootMultiplier;
+    const getSecondaryMultiplier = index => ((index + 1) / 10 + open + 1) * rootMultiplier;
     return (
       <div className={style.tablesContainer}>
-        <TableRow
-          multiplier={open}
-          theme={theme}
-          onColumnClick={this.handleColumnClick(null)}
-          primary
-        />
-        {multipliers.map(multiplier => (
+        {open === null ? [...Array(10).keys()].map(index => (
           <TableRow
-            multiplier={multiplier}
+            multiplier={getPrimaryMultiplier(index)}
             theme={theme}
-            key={multiplier}
-            onColumnClick={this.handleColumnClick(multiplier)}
+            key={index}
+            onColumnClick={this.handleColumnClick(index)}
+            primary
           />
-        ))}
-        <TableRow
-          multiplier={open + rootMultiplier}
-          theme={theme}
-          onColumnClick={this.handleColumnClick(null)}
-          primary
-        />
+        )) : (
+          <Fragment>
+            <TableRow
+              multiplier={getPrimaryMultiplier(open)}
+              theme={theme}
+              onColumnClick={this.handleColumnClick(null)}
+              primary
+            />
+            {[...Array(9).keys()].map(index => (
+              <TableRow
+                multiplier={getSecondaryMultiplier(index)}
+                theme={theme}
+                key={index}
+                onColumnClick={this.handleColumnClick(index)}
+              />
+            ))}
+            <TableRow
+              multiplier={getPrimaryMultiplier(open + 1)}
+              theme={theme}
+              onColumnClick={this.handleColumnClick(null)}
+              primary
+            />
+          </Fragment>
+        )}
       </div>
     );
   }

@@ -9,24 +9,26 @@ import style from './TableRow.module.css';
 const TableRow = ({
   rate1, rate2, theme, multiplier, onColumnClick, primary,
 }) => (
-  <div className={classNames(
-    theme.columnsContainer,
-    primary ? style.primaryTableRow : style.secondaryTableRow,
-  )}
+  <Clickable
+    className={classNames(
+      theme.columnsContainer,
+      primary ? style.primaryTableRow : style.secondaryTableRow,
+    )}
+    onClick={onColumnClick}
   >
-    <Clickable
-      onClick={onColumnClick}
+    <div
+
       className={classNames(theme.commonColumns, theme.leftColumn)}
     >
       {pretty4DecNumber(multiplier)}
-    </Clickable>
-    <Clickable
-      onClick={onColumnClick}
+    </div>
+    <div
+
       className={classNames(theme.commonColumns, theme.rightColumn)}
     >
       {pretty4DecNumber(rate2.rate / rate1.rate * multiplier)}
-    </Clickable>
-  </div>
+    </div>
+  </Clickable>
 );
 
 TableRow.propTypes = {

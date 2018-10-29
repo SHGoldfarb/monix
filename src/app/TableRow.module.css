@@ -1,11 +1,11 @@
 @import "../variables.css";
 
 .primaryTableRow {
-    height: 10%;
+    flex: 9;
     background-color: var(--dark-bg-color);
     color: white;
 }
 
 .secondaryTableRow {
-    height: calc(80% / 9);
+    flex: 8;
 }
