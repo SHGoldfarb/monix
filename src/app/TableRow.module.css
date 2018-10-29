@@ -9,3 +9,7 @@
 .secondaryTableRow {
     flex: 8;
 }
+
+.numberContainer {
+    font-size: 25px;
+}

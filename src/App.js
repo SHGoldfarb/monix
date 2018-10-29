@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import View from './app/View';
 import rates from './dummy-rates';
-import { setRate1, setRate2, setMultiplier } from './redux/actions';
+import {
+  setRate1, setRate2, setMultiplier, fetchRates,
+} from './redux/actions';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class App extends Component {
 
     props.onRatesChange(rate1, rate2);
     props.onMultiplierChange(10);
+    props.fetchRates();
   }
 
   render() {
@@ -32,6 +35,7 @@ class App extends Component {
 App.propTypes = {
   onRatesChange: PropTypes.func.isRequired,
   onMultiplierChange: PropTypes.func.isRequired,
+  fetchRates: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -40,6 +44,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setRate2(rate2));
   },
   onMultiplierChange: multiplier => dispatch(setMultiplier(multiplier)),
+  fetchRates: async () => dispatch(await fetchRates()),
 });
 
 export default connect(() => ({ }), mapDispatchToProps)(App);

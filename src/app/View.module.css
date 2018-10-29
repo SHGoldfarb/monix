@@ -4,6 +4,9 @@
     background-color: var(--main-bg-color);
     display: flex;    
     align-items: center;
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: var(--semidark-bg-color);
 }
 
 .leftColumn {
@@ -13,7 +16,6 @@
 .commonColumns {
     flex: 1;
     padding: 0px 5px;
-    
 }
 
 .swipeableContainer {

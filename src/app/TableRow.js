@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Clickable from './Clickable';
-import { classNames, pretty4DecNumber } from './utils';
+import { classNames, prettyNumber } from './utils';
 import { rate1Selector, rate2Selector } from '../redux/selectors';
 import style from './TableRow.module.css';
 
@@ -18,15 +18,14 @@ const TableRow = ({
   >
     <div
 
-      className={classNames(theme.commonColumns, theme.leftColumn)}
+      className={classNames(theme.commonColumns, theme.leftColumn, style.numberContainer)}
     >
-      {pretty4DecNumber(multiplier)}
+      {prettyNumber(multiplier)}
     </div>
     <div
-
-      className={classNames(theme.commonColumns, theme.rightColumn)}
+      className={classNames(theme.commonColumns, theme.rightColumn, style.numberContainer)}
     >
-      {pretty4DecNumber(rate2.rate / rate1.rate * multiplier)}
+      {prettyNumber(rate2.rate / rate1.rate * multiplier)}
     </div>
   </Clickable>
 );

@@ -1,0 +1,11 @@
+@import "../variables.css";
+
+.selector {
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0px 20px;
+    font-size: 30px;
+    color: var(--main-font-color);
+}

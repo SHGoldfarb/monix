@@ -1,9 +1,9 @@
 const rates = {
-  usd: 1,
-  clp: 687.6,
-  ars: 36.77,
-  eur: 0.88,
-  jpy: 11.9,
+  USD: 1,
+  CLP: 687.6,
+  ARS: 36.77,
+  EUR: 0.88,
+  JPY: 11.9,
 };
 
 export default rates;

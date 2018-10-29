@@ -1,4 +1,6 @@
 :root {
-    --main-bg-color: darkgrey;
+    --main-bg-color: #777;
     --dark-bg-color: #444;
+    --semidark-bg-color: #555;
+    --main-font-color: #FFF;
   }
