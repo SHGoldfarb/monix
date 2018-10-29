@@ -2,6 +2,14 @@
 
 .columnsContainer {
     background-color: var(--main-bg-color);
-    height: 100%;
     display: flex;
+}
+
+.leftColumn {
+    text-align: right;
+}
+
+.commonColumns {
+    flex: 1;
+    padding: 0px 5px;
 }

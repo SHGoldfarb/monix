@@ -14,8 +14,8 @@ class App extends Component {
       rate: rates[rateNames[0]],
     };
     const rate2 = {
-      name: rateNames[2],
-      rate: rates[rateNames[2]],
+      name: rateNames[1],
+      rate: rates[rateNames[1]],
     };
 
     props.onRatesChange(rate1, rate2);
