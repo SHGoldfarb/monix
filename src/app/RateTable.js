@@ -30,9 +30,8 @@ class RateTable extends Component {
   }
 
   render() {
-    const { theme } = this.props;
+    const { theme, rootMultiplier } = this.props;
     const { open } = this.state;
-    const rootMultiplier = 10;
     if (open === null) {
       const multipliers = [...Array(10).keys()].map(key => (key + 1) * rootMultiplier);
       return (
@@ -80,6 +79,7 @@ class RateTable extends Component {
 
 RateTable.propTypes = {
   theme: PropTypes.objectOf(PropTypes.string).isRequired,
+  rootMultiplier: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
