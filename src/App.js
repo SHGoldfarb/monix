@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import View from './app/View';
 import rates from './dummy-rates';
-import { setRate1, setRate2 } from './redux/actions';
+import { setRate1, setRate2, setMultiplier } from './redux/actions';
 
 class App extends Component {
   constructor(props) {
@@ -14,11 +14,12 @@ class App extends Component {
       rate: rates[rateNames[0]],
     };
     const rate2 = {
-      name: rateNames[1],
-      rate: rates[rateNames[1]],
+      name: rateNames[2],
+      rate: rates[rateNames[2]],
     };
 
     props.onRatesChange(rate1, rate2);
+    props.onMultiplierChange(10);
   }
 
   render() {
@@ -30,13 +31,15 @@ class App extends Component {
 
 App.propTypes = {
   onRatesChange: PropTypes.func.isRequired,
+  onMultiplierChange: PropTypes.func.isRequired,
 };
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   onRatesChange: (rate1, rate2) => {
     dispatch(setRate1(rate1));
     dispatch(setRate2(rate2));
   },
+  onMultiplierChange: multiplier => dispatch(setMultiplier(multiplier)),
 });
 
-export default connect(() => ({ }), mapDispatchtoProps)(App);
+export default connect(() => ({ }), mapDispatchToProps)(App);

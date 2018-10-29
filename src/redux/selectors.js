@@ -16,3 +16,17 @@ export const createRateNameSelector = rateNumber => (state) => {
       return 'Rate not found';
   }
 };
+
+export const multiplier1Selector = state => state.multiplier;
+export const multiplier2Selector = state => state.multiplier * state.rate2.rate / state.rate1.rate;
+
+export const createMultiplierSelector = rateNumber => (state) => {
+  switch (rateNumber) {
+    case 1:
+      return multiplier1Selector(state);
+    case 2:
+      return multiplier2Selector(state);
+    default:
+      return null;
+  }
+};
