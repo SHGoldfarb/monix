@@ -11,14 +11,15 @@ class RateTable extends Component {
     this.state = {
       open: null,
     };
+    this.handleColumnClick = this.handleColumnClick.bind(this);
   }
 
-  columnClickHandler(columnNumber) {
+  handleColumnClick(multiplier) {
     return () => {
       const { open } = this.state;
       if (open === null) {
         this.setState({
-          open: columnNumber,
+          open: multiplier,
         });
       } else {
         this.setState({
@@ -30,12 +31,47 @@ class RateTable extends Component {
 
   render() {
     const { theme } = this.props;
-    const multipliers = [...Array(10).keys()].map(key => (key + 1) * 10);
+    const { open } = this.state;
+    const rootMultiplier = 10;
+    if (open === null) {
+      const multipliers = [...Array(10).keys()].map(key => (key + 1) * rootMultiplier);
+      return (
+        <div className={style.tablesContainer}>
+          {multipliers.map(multiplier => (
+            <TableRow
+              multiplier={multiplier}
+              theme={theme}
+              key={multiplier}
+              onColumnClick={this.handleColumnClick(multiplier)}
+              primary
+            />
+          ))}
+        </div>
+      );
+    }
+    const multipliers = [...Array(9).keys()].map(key => (key + 1) / 10 * rootMultiplier + open);
     return (
       <div className={style.tablesContainer}>
+        <TableRow
+          multiplier={open}
+          theme={theme}
+          onColumnClick={this.handleColumnClick(null)}
+          primary
+        />
         {multipliers.map(multiplier => (
-          <TableRow multiplier={multiplier} theme={theme} key={multiplier} />
+          <TableRow
+            multiplier={multiplier}
+            theme={theme}
+            key={multiplier}
+            onColumnClick={this.handleColumnClick(multiplier)}
+          />
         ))}
+        <TableRow
+          multiplier={open + rootMultiplier}
+          theme={theme}
+          onColumnClick={this.handleColumnClick(null)}
+          primary
+        />
       </div>
     );
   }

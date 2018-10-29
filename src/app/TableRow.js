@@ -2,25 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Clickable from './Clickable';
-import { classNames } from './utils';
+import { classNames, prettyTwoDecNumber } from './utils';
 import { rate1Selector, rate2Selector } from '../redux/selectors';
 import style from './TableRow.module.css';
 
 const TableRow = ({
-  rate1, rate2, theme, multiplier, onColumnClick,
+  rate1, rate2, theme, multiplier, onColumnClick, primary,
 }) => (
-  <div className={classNames(theme.columnsContainer, style.tableRow)}>
+  <div className={classNames(
+    theme.columnsContainer,
+    primary ? style.primaryTableRow : style.secondaryTableRow,
+  )}
+  >
     <Clickable
-      onClick={() => onColumnClick}
+      onClick={onColumnClick}
       className={classNames(theme.commonColumns, theme.leftColumn)}
     >
-      {rate1.rate * multiplier}
+      {prettyTwoDecNumber(rate1.rate * multiplier)}
     </Clickable>
     <Clickable
-      onClick={() => onColumnClick}
+      onClick={onColumnClick}
       className={classNames(theme.commonColumns, theme.rightColumn)}
     >
-      {rate2.rate * multiplier}
+      {prettyTwoDecNumber(rate2.rate * multiplier)}
     </Clickable>
   </div>
 );
@@ -35,11 +39,13 @@ TableRow.propTypes = {
   theme: PropTypes.objectOf(PropTypes.string),
   multiplier: PropTypes.number.isRequired,
   onColumnClick: PropTypes.func,
+  primary: PropTypes.bool,
 };
 
 TableRow.defaultProps = {
   theme: {},
-  onColumnClick: () => {},
+  onColumnClick: () => console.log('No click handler'), // eslint-disable-line no-console
+  primary: false,
 };
 
 const mapStateToProps = state => ({
