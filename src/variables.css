@@ -2,5 +2,11 @@
     --main-bg-color: #777;
     --dark-bg-color: #444;
     --semidark-bg-color: #555;
-    --main-font-color: #FFF;
+    --main-font-color: white;
+
+    --primary-font-color: white;
+    --primary-bg-color:var(--dark-bg-color);
+
+    --secondary-font-color: black;
+    --secondary-bg-color:var(--main-bg-color);
   }

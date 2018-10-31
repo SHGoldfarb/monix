@@ -20,12 +20,16 @@ const TableRow = ({
 
       className={classNames(theme.commonColumns, theme.leftColumn, style.numberContainer)}
     >
-      {prettyNumber(multiplier)}
+      <div className={style.columnItem}>
+        {prettyNumber(multiplier)}
+      </div>
     </div>
     <div
       className={classNames(theme.commonColumns, theme.rightColumn, style.numberContainer)}
     >
-      {prettyNumber(rate2.rate / rate1.rate * multiplier)}
+      <div className={style.columnItem}>
+        {prettyNumber(rate2.rate / rate1.rate * multiplier)}
+      </div>
     </div>
   </Clickable>
 );

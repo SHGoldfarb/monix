@@ -2,14 +2,20 @@
 
 .primaryTableRow {
     flex: 9;
-    background-color: var(--dark-bg-color);
-    color: white;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-font-color);
 }
 
 .secondaryTableRow {
     flex: 8;
+    color: var(--secondary-font-color);
+    background-color: var(--secondary-bg-color);
 }
 
 .numberContainer {
     font-size: 25px;
+}
+
+.columnItem {
+    
 }
